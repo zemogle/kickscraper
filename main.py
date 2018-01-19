@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import settings
 import json
+import six
 
 try:
     import unicornhathd

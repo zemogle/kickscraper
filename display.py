@@ -2,6 +2,7 @@ import colorsys
 import signal
 import time
 from sys import exit
+import six
 
 try:
     from PIL import Image, ImageDraw, ImageFont
