@@ -66,21 +66,18 @@ def display_happy():
 
     width, height = unicornhathd.get_shape()
 
-    img = Image.open('star.png')
+    img = Image.open('star_sm.png')
 
-    try:
-        valid = False
-        for x in range(width):
-            for y in range(height):
-                pixel = img.getpixel((y, x))
-                r, g, b = int(pixel[0]),int(pixel[1]),int(pixel[2])
-                if r or g or b:
-                    valid = True
-                unicornhathd.set_pixel(x, y, r, g, b)
-        if valid:
-            unicornhathd.show()
-            time.sleep(0.5)
-
-    except KeyboardInterrupt:
+    valid = False
+    for x in range(width):
+        for y in range(height):
+            pixel = img.getpixel((y, x))
+            r, g, b = int(pixel[0]),int(pixel[1]),int(pixel[2])
+            if r or g or b:
+                valid = True
+            unicornhathd.set_pixel(x, y, r, g, b)
+    if valid:
+        unicornhathd.show()
+        time.sleep(5)
         unicornhathd.off()
     return

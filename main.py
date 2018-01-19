@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import settings
 import json
 import six
+import atexit
 
 try:
     import unicornhathd
@@ -36,10 +37,19 @@ def scrape():
     backers = soup.find_all(id='backers_count')[0].attrs['data-backers-count']
     return {'pledged':pledged, 'percent':percent, 'backers':backers}
 
+def tear_down():
+    print("Kickscraper stopped")
+    unicornhathd.off()
+    return
+
+atexit.register(tear_down)
+
 if __name__ == '__main__':
-    old_data = load_data()
-    data = scrape()
-    if data and old_data['pledged'] != data['pledged']:
-        output_data(data)
-        display_happy()
-        display_data(data)
+    while True:
+        old_data = load_data()
+        data = scrape()
+        if data and old_data['pledged'] != data['pledged']:
+            output_data(data)
+            display_happy()
+            display_data(data)
+        time.sleep(300)
