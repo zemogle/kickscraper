@@ -14,9 +14,9 @@ import unicornhathd
 def display_data(data):
     text = "{} from {} backers = {}%!".format(data['pledged'], data['backers'], data['percent'])
 
-    colours = [tuple([int(n * 255) for n in colorsys.hsv_to_rgb(x/float(len(lines)), 1.0, 1.0)]) for x in range(len(lines))]
+    colours = [tuple([int(n * 255) for n in colorsys.hsv_to_rgb(x/1.0, 1.0, 1.0)]) for x in range(1)]
 
-    FONT = ("/usr/share/fonts/truetype/freefont/FreeSansBold.ttf", 12)
+    FONT = ("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", 12)
 
     unicornhathd.rotation(0)
     unicornhathd.brightness(1.0)
