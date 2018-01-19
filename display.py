@@ -86,5 +86,5 @@ def display_happy():
                         time.sleep(0.5)
 
     except KeyboardInterrupt:
-    unicornhathd.off()
+        unicornhathd.off()
     return
