@@ -4,6 +4,7 @@ import settings
 import json
 import six
 import atexit
+import time
 
 try:
     import unicornhathd
