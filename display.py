@@ -19,9 +19,7 @@ def display_data(data):
     unicornhathd.rotation(90)
     unicornhathd.brightness(0.5)
 
-    width, height = unicornhathd.get_shape()
-
-    percent = floor(data['percent']*num_pix)
+    percent = floor(float(data['percent'])*float(num_pix))
     for x in range(width):
         for y in range(height):
             pix = x * width + y
