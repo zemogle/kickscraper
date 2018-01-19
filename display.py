@@ -12,7 +12,7 @@ except ImportError:
 import unicornhathd
 
 def display_data(data):
-    text = "£{} from {} backers = {}%!".format(data['pledged'], data['backers'], data['percent'])
+    text = "{} from {} backers = {}%!".format(data['pledged'], data['backers'], data['percent'])
 
     colours = [tuple([int(n * 255) for n in colorsys.hsv_to_rgb(x/float(len(lines)), 1.0, 1.0)]) for x in range(len(lines))]
 

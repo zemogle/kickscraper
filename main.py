@@ -11,9 +11,11 @@ except:
     from display_demo import display_data, display_happy
 
 def load_data():
-    with open(settings.JSON_FILE, 'r') as f:
-        stats = json.load(f)
-
+    try:
+        with open(settings.JSON_FILE, 'r') as f:
+            stats = json.load(f)
+    except:
+        stats = {'pledged':0, 'percent':0, 'backers':0}
     return stats
 
 def output_data(data):
