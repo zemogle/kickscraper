@@ -53,5 +53,5 @@ if __name__ == '__main__':
         if data and old_data['pledged'] != data['pledged']:
             output_data(data)
             display_happy('star_sm.png')
-            display_data(data)
         time.sleep(300)
+        display_data(data)
