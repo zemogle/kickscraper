@@ -3,6 +3,7 @@ import signal
 import time
 from sys import exit
 import six
+from math import floor
 
 try:
     from PIL import Image, ImageDraw, ImageFont
@@ -12,6 +13,29 @@ except ImportError:
 import unicornhathd
 
 def display_data(data):
+    width, height = unicornhathd.get_shape()
+    num_pix = width*height
+
+    unicornhathd.rotation(90)
+    unicornhathd.brightness(0.5)
+
+    width, height = unicornhathd.get_shape()
+
+    percent = floor(data['percent']*num_pix)
+    for x in range(width):
+        for y in range(height):
+            pix = x * width + y
+            if pix < percent:
+                unicornhathd.set_pixel(x, y, 255,255,255)
+            else:
+                unicornhathd.set_pixel(x, y, 0,0,0)
+    unicornhathd.show()
+    time.sleep(5)
+    unicornhathd.off()
+    return
+
+
+def display_text(data):
     text = "{} from {} backers = {}%!".format(data['pledged'], data['backers'], data['percent'])
 
     colours = [tuple([int(n * 255) for n in colorsys.hsv_to_rgb(x/1.0, 1.0, 1.0)]) for x in range(1)]
@@ -59,14 +83,14 @@ def display_data(data):
     unicornhathd.off()
     return
 
-def display_happy():
+def display_happy(filename):
 
     unicornhathd.rotation(90)
     unicornhathd.brightness(0.5)
 
     width, height = unicornhathd.get_shape()
 
-    img = Image.open('star_sm.png')
+    img = Image.open(filename)
 
     valid = False
     for x in range(width):

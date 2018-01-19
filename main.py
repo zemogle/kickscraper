@@ -46,11 +46,12 @@ def tear_down():
 atexit.register(tear_down)
 
 if __name__ == '__main__':
+    display_happy('ada.png')
     while True:
         old_data = load_data()
         data = scrape()
         if data and old_data['pledged'] != data['pledged']:
             output_data(data)
-            display_happy()
+            display_happy('star_sm.png')
             display_data(data)
         time.sleep(300)
