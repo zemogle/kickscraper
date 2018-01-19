@@ -65,5 +65,6 @@ if __name__ == '__main__':
             logging.debug('New pledges - {}!'.format(data['pledged']))
             output_data(data)
             display_happy(settings.PROJECT_DIR+'star_sm.png')
+        logging.debug('Pledge graphic')
         display_data(data)
         time.sleep(300)
