@@ -46,7 +46,7 @@ def tear_down():
 atexit.register(tear_down)
 
 if __name__ == '__main__':
-    display_happy('ada.png')
+    display_happy('ada_title.png')
     while True:
         old_data = load_data()
         data = scrape()
