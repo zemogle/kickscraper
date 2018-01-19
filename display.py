@@ -72,7 +72,7 @@ def display_happy():
         valid = False
         for x in range(width):
             for y in range(height):
-                pixel = img.getpixel((int(img.size[0])+y,int(img.size[1])+x))
+                pixel = img.getpixel((y, x))
                 r, g, b = int(pixel[0]),int(pixel[1]),int(pixel[2])
                 if r or g or b:
                     valid = True
