@@ -27,7 +27,10 @@ def output_data(data):
 
 def scrape():
     url = "https://www.kickstarter.com/projects/{}/{}/".format(settings.PROJECT_ID, settings.PROJECT_NAME)
-    resp = requests.get(url)
+    try:
+        resp = requests.get(url, timeout=10)
+    except:
+        return False
     if resp.status_code in [200,201]:
         content = resp.content
         soup = BeautifulSoup(content, 'html.parser')
