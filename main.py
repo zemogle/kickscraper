@@ -8,7 +8,7 @@ import time
 import logging
 import os
 
-logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+logging.basicConfig(format='%(levelname)s:%(message)s', level=settings.LOG_LEVEL)
 
 try:
     import unicornhathd
@@ -46,6 +46,7 @@ def scrape():
     pledged = soup.find_all(id='pledged')[0].attrs['data-pledged']
     percent = soup.find_all(id='pledged')[0].attrs['data-percent-raised']
     backers = soup.find_all(id='backers_count')[0].attrs['data-backers-count']
+    logging.debug('Finished scraping')
     return {'pledged':pledged, 'percent':percent, 'backers':backers}
 
 def tear_down():

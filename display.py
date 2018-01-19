@@ -28,8 +28,6 @@ def display_data(data):
             else:
                 unicornhathd.set_pixel(x, y, 0,0,0)
     unicornhathd.show()
-    time.sleep(5)
-    unicornhathd.off()
     return
 
 
