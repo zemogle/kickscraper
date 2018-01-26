@@ -12,7 +12,7 @@ You'll also need a `settings.py` file which has the following format:
 import logging
 
 PROJECT_ID = 'XXXX' # Numbers
-PROJECT_NAME = 'YYY-YYY' # the name of your project, lower case with spaces replaced with 'u'
+PROJECT_NAME = 'YYY-YYY' # the name of your project, lower case with spaces replaced with '-'
 JSON_FILE = 'data.json' # Where the data is stored so we know if we have new pledges
 PROJECT_DIR = '/home/pi/kickscraper/'
 LOG_LEVEL=logging.DEBUG
