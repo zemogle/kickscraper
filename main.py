@@ -65,7 +65,7 @@ if __name__ == '__main__':
         if data and old_data['pledged'] != data['pledged']:
             logging.debug('New pledges - {}!'.format(data['pledged']))
             output_data(data)
-            display_happy(settings.PROJECT_DIR+'star_sm.png')
+            display_happy(settings.PROJECT_DIR+'ada_title.png')
         logging.debug('Pledge graphic')
         display_data(data)
         time.sleep(300)
