@@ -8,7 +8,7 @@ import time
 import logging
 import os
 
-logging.basicConfig(format='%(levelname)s:%(message)s', level=settings.LOG_LEVEL)
+logging.basicConfig(filename='/home/pi/kick.log', format='%(levelname)s:%(message)s', level=settings.LOG_LEVEL)
 
 try:
     import unicornhathd
