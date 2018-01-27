@@ -58,10 +58,10 @@ def scrape():
 
 if __name__ == '__main__':
     logging.debug('Starting up')
-    display_happy(settings.PROJECT_DIR+'ada_title.png')
+    # display_happy(settings.PROJECT_DIR+'ada_title.png')
     old_data = load_data()
+    display_data(old_data)
     data = scrape()
-    display_data(data)
     if data and old_data['pledged'] != data['pledged']:
         logging.debug('New pledges - {}!'.format(data['pledged']))
         output_data(data)
