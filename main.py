@@ -49,12 +49,12 @@ def scrape():
     logging.debug('Finished scraping')
     return {'pledged':pledged, 'percent':percent, 'backers':backers}
 
-def tear_down():
-    logging.warning("Kickscraper stopped")
-    unicornhathd.off()
-    return
-
-atexit.register(tear_down)
+# def tear_down():
+#     logging.warning("Kickscraper stopped")
+#     unicornhathd.off()
+#     return
+#
+# atexit.register(tear_down)
 
 if __name__ == '__main__':
     logging.debug('Starting up')
