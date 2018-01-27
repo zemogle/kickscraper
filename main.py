@@ -59,13 +59,12 @@ atexit.register(tear_down)
 if __name__ == '__main__':
     logging.debug('Starting up')
     display_happy(settings.PROJECT_DIR+'ada_title.png')
-    while True:
-        old_data = load_data()
-        data = scrape()
-        if data and old_data['pledged'] != data['pledged']:
-            logging.debug('New pledges - {}!'.format(data['pledged']))
-            output_data(data)
-            display_happy(settings.PROJECT_DIR+'ada_title.png')
-        logging.debug('Pledge graphic')
-        display_data(data)
-        time.sleep(300)
+    old_data = load_data()
+    data = scrape()
+    display_data(data)
+    if data and old_data['pledged'] != data['pledged']:
+        logging.debug('New pledges - {}!'.format(data['pledged']))
+        output_data(data)
+        display_happy(settings.PROJECT_DIR+'ada_title.png')
+    logging.debug('Pledge graphic')
+    display_data(data)
