@@ -7,6 +7,7 @@ import atexit
 import time
 import logging
 import os
+from math import ceil
 
 logging.basicConfig(filename='/home/pi/kick.log', format='%(levelname)s:%(message)s', level=settings.LOG_LEVEL)
 
