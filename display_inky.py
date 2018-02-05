@@ -15,7 +15,7 @@ def display_data(data):
     left = 0
     offset_left = 5
 
-    text_lines= ["Backers {}".format(data['backers']),"£{} - {}%".format(data['total'], data['percent'])]
+    text_lines= ["Backers {}".format(data['backers']),"{} - {}%".format(data['pledged'], data['percent'])]
 
     inkyphat.show()
     return
