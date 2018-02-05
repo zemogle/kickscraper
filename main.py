@@ -14,6 +14,7 @@ logging.basicConfig(filename='/home/pi/kick.log', format='%(levelname)s:%(messag
 try:
     from display_inky import display_data, display_happy
 except:
+    logging.debug("Couldn't import display_inky")
     from display_demo import display_data, display_happy
 
 def load_data():
