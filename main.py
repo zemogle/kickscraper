@@ -11,8 +11,7 @@ import os
 logging.basicConfig(filename='/home/pi/kick.log', format='%(levelname)s:%(message)s', level=settings.LOG_LEVEL)
 
 try:
-    import unicornhathd
-    from display import display_data, display_happy
+    from display_inky import display_data, display_happy
 except:
     from display_demo import display_data, display_happy
 
@@ -30,7 +29,7 @@ def output_data(data):
     return
 
 def scrape():
-    url = "https://www.kickstarter.com/projects/{}/{}/".format(settings.PROJECT_ID, settings.PROJECT_NAME)
+    url = "https://www.kickstarter.com/projects/{}/{}/stats.json?v=1".format(settings.PROJECT_ID, settings.PROJECT_NAME)
     try:
         logging.debug('GET to Kickstarter')
         resp = requests.get(url, timeout=10)
@@ -38,14 +37,13 @@ def scrape():
         return False
     if resp.status_code in [200,201]:
         logging.debug('Response recieved')
-        content = resp.content
-        soup = BeautifulSoup(content, 'html.parser')
+        content = resp.json()
     else:
         logging.warning('No Response recieved')
         return False
-    pledged = soup.find_all(id='pledged')[0].attrs['data-pledged']
-    percent = soup.find_all(id='pledged')[0].attrs['data-percent-raised']
-    backers = soup.find_all(id='backers_count')[0].attrs['data-backers-count']
+    pledged = content['project']['pledged']
+    percent = ceil(float(pledged)/settings.TOTAL)
+    backers = content['project']['backers_count']
     logging.debug('Finished scraping')
     return {'pledged':pledged, 'percent':percent, 'backers':backers}
 
