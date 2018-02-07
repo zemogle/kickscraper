@@ -44,7 +44,7 @@ def scrape():
         logging.warning('No Response recieved')
         return False
     pledged = content['project']['pledged']
-    percent = ceil(float(pledged)/float(settings.TOTAL))
+    percent = ceil(float(pledged)/float(settings.TOTAL)*100.0)
     backers = content['project']['backers_count']
     logging.debug('Finished scraping')
     return {'pledged':pledged, 'percent':percent, 'backers':backers}
