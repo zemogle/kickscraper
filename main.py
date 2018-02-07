@@ -44,17 +44,10 @@ def scrape():
         logging.warning('No Response recieved')
         return False
     pledged = content['project']['pledged']
-    percent = ceil(float(pledged)/settings.TOTAL)
+    percent = ceil(float(pledged)/float(settings.TOTAL))
     backers = content['project']['backers_count']
     logging.debug('Finished scraping')
     return {'pledged':pledged, 'percent':percent, 'backers':backers}
-
-# def tear_down():
-#     logging.warning("Kickscraper stopped")
-#     unicornhathd.off()
-#     return
-#
-# atexit.register(tear_down)
 
 if __name__ == '__main__':
     logging.debug('Starting up')
@@ -65,6 +58,6 @@ if __name__ == '__main__':
     if data and old_data['pledged'] != data['pledged']:
         logging.debug('New pledges - {}!'.format(data['pledged']))
         output_data(data)
-        display_happy(settings.PROJECT_DIR+'ada_title.png')
+        # display_happy(settings.PROJECT_DIR+'ada_title.png')
+        display_data(data)
     logging.debug('Pledge graphic')
-    display_data(data)
