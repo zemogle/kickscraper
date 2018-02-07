@@ -15,7 +15,7 @@ def display_data(data):
     left = 0
     offset_left = 5
 
-    text_lines= ["Backers {}".format(data['backers']),"{} - {}%".format(data['pledged'], data['percent'])]
+    text_lines= ["Ada's Adventures in Science","Backers {}".format(data['backers']),"{} - {:.1f}%".format(data['pledged'], data['percent'])]
     font = inkyphat.ImageFont.truetype(font_file, 20)
     for text in text_lines:
         width, height = font.getsize(text)
